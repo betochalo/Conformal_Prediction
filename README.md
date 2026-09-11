@@ -8,9 +8,6 @@ conceptual. El alcance de ejecución se reduce según la observación docente:
 un clasificador base y dos variantes conformes en dos semanas.
 Estado actual: estructura del proyecto; algoritmos y experimentos pendientes.
 
-El [plan de implementación en pareja](PLAN.md) detalla etapas sin fechas,
-responsables propuestos, dependencias y criterios para completar cada parte.
-
 ## Producto mínimo aprobado
 
 - Un único clasificador base: `HistGradientBoostingClassifier`, elegido como punto
