@@ -4,12 +4,25 @@ El modelo se entrena una sola vez fuera de esta capa. Implementación pendiente.
 APS queda como extensión fuera del producto mínimo.
 """
 
+import math
 from typing import Self
 
 import numpy as np
 from numpy.typing import NDArray
 
 from .contracts import Labels, PredictionSets, Probabilities
+
+
+def conformal_rank(n: int, *, alpha: float) -> int:
+    """Rango ceil((n + 1) * (1 - alpha)) del estadístico de orden usado como cuantil.
+
+    Si el resultado supera n, el cuantil correspondiente es infinito.
+    """
+    if not 0 < alpha < 1:
+        raise ValueError("alpha debe estar entre 0 y 1, sin incluir extremos.")
+    if n < 0:
+        raise ValueError("n no puede ser negativo.")
+    return math.ceil((n + 1) * (1 - alpha))
 
 
 def conformal_quantile(scores: NDArray[np.float64], *, alpha: float) -> float:

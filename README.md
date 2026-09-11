@@ -6,7 +6,9 @@ en conjuntos de diagnósticos y decisiones automáticas, asistidas o humanas.
 La [propuesta original aprobada](propuesta_final_roberth_jaime.pdf) es la referencia
 conceptual. El alcance de ejecución se reduce según la observación docente:
 un clasificador base y dos variantes conformes en dos semanas.
-Estado actual: estructura del proyecto; algoritmos y experimentos pendientes.
+Estado actual: datos descargados; Etapas 1 y 2 (carga, auditoría, etiquetas,
+particiones y viabilidad) implementadas con pruebas; modelo, algoritmos conformes y
+experimentos pendientes.
 
 ## Producto mínimo aprobado
 

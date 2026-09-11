@@ -19,5 +19,7 @@ se desarrollan esas extensiones. Una simulación de cobertura, si se incorpora,
 debe tener tolerancia estadística explícita; no exigir que cada muestra finita
 alcance exactamente la cobertura nominal.
 
-La estructura inicial todavía no contiene pruebas ejecutables; `pytest` devolverá
-código 5 hasta que se agregue la primera prueba.
+`test_data.py` cubre la Etapa 1 con filas sintéticas: carga validada, auditoría,
+prioridad, ambas políticas de RNF y políticas inválidas. `test_splitting.py` cubre
+la Etapa 2: disjunción, conservación de filas, estratificación, reproducibilidad,
+fracciones inválidas, conteos con ceros y el rango del cuantil por alpha.

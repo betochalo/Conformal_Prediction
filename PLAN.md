@@ -8,7 +8,8 @@ las métricas principales son cobertura por clase, tamaño medio y abstención.
 - [x] Entorno uv, paquete importable y dependencias.
 - [x] AI4I descargado con metadatos y hash.
 - [x] Contratos de datos y firmas de las funciones.
-- [ ] Auditoría, política de etiquetas y conteos reales por partición.
+- [x] Auditoría y política de etiquetas propuesta (ver `data/README.md`).
+- [x] Conteos reales por partición y decisión propuesta de fracciones y alpha.
 - [ ] Modelo, algoritmos conformes, métricas y ejecución integrada.
 
 Las funciones pendientes lanzan `NotImplementedError`: las firmas son acuerdos
