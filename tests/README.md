@@ -1,0 +1,23 @@
+# Pruebas previstas
+
+Agregar pruebas junto con la implementación de cada componente:
+
+Seguir las etapas y criterios de [PLAN.md](../PLAN.md). Archivos previstos:
+`test_data.py`, `test_splitting.py`, `test_model.py`, `test_scores.py`,
+`test_conformal.py`, `test_decision.py`, `test_evaluation.py` y `test_pipeline.py`.
+Usar fixtures pequeñas y sintéticas para las pruebas unitarias, sin descargas.
+Las funciones aún pendientes no deben tener pruebas ficticias que den éxito.
+
+- Cuantil de rango corregido, empates y caso de rango mayor que la muestra.
+- Conjuntos calculados a mano para split y Mondrian.
+- Orden de clases del estimador y clases sin ejemplos de calibración.
+- Particiones disjuntas y ausencia de ajuste con datos de calibración o prueba.
+- Cobertura, tamaño y abstención calculados a mano, incluyendo conjuntos vacíos.
+
+Las pruebas de APS, características físicas y costos se agregarán únicamente si
+se desarrollan esas extensiones. Una simulación de cobertura, si se incorpora,
+debe tener tolerancia estadística explícita; no exigir que cada muestra finita
+alcance exactamente la cobertura nominal.
+
+La estructura inicial todavía no contiene pruebas ejecutables; `pytest` devolverá
+código 5 hasta que se agregue la primera prueba.
