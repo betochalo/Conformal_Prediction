@@ -6,9 +6,9 @@ en conjuntos de diagnósticos y decisiones automáticas, asistidas o humanas.
 La [propuesta original aprobada](propuesta_final_roberth_jaime.pdf) es la referencia
 conceptual. El alcance de ejecución se reduce según la observación docente:
 un clasificador base y dos variantes conformes en dos semanas.
-Estado actual: datos descargados; Etapas 1 y 2 (carga, auditoría, etiquetas,
-particiones y viabilidad) implementadas con pruebas; modelo, algoritmos conformes y
-experimentos pendientes.
+Estado actual: etapas 1–6 implementadas con pruebas: datos, particiones, modelo,
+split conformal, Mondrian, abstención y métricas. La ejecución integrada y la
+evaluación final quedan pendientes (etapas 7 y 8 del [plan](PLAN.md)).
 
 ## Producto mínimo aprobado
 
@@ -48,7 +48,7 @@ uv sync
 uv run ruff check .
 ```
 
-Cuando existan pruebas, ejecutarlas con `uv run pytest`. Para generar el paquete
+Ejecutar las pruebas con `uv run pytest`. Para generar el paquete
 instalable: `uv build`. Versionar `uv.lock` para reproducir las dependencias.
 
 ## Organización
@@ -80,12 +80,40 @@ Por ejemplo, una vez instalado con `uv sync`:
 from conformal_fault_inference_with_abstention import conformal, data, evaluation
 ```
 
-Los módulos tienen firmas, tipos y contratos; las funciones pendientes lanzan
-`NotImplementedError`. El modelo se entrenará fuera de la capa conforme, que recibe
+Los módulos de las etapas 1–6 ya son utilizables. El modelo se entrena fuera de la
+capa conforme, que recibe
 probabilidades y el orden explícito de las clases. Así ambas variantes comparten
 el mismo clasificador. `pipeline.run_pipeline` será el punto de entrada importable
 cuando se complete la integración; todavía no ejecuta el proyecto. `tests/` se
-reserva para verificar esa lógica y `artifacts/` para guardar métricas y figuras.
+usa para verificar esa lógica y `artifacts/` para guardar métricas y figuras.
+
+## Ejemplo manual de split conformal
+
+Este ejemplo usa probabilidades inventadas para entender el cálculo; no son
+resultados del dataset. Las puntuaciones verdaderas son 0.125, 0.25 y 0.5.
+Con alpha=0.5, el rango corregido es 2 y el umbral es 0.25.
+
+```python
+from conformal_fault_inference_with_abstention.conformal import SplitConformal
+from conformal_fault_inference_with_abstention.decision import route_predictions
+from conformal_fault_inference_with_abstention.evaluation import evaluate_sets
+
+predictor = SplitConformal(alpha=0.5).calibrate(
+    [[0.875, 0.125], [0.75, 0.25], [0.5, 0.5]],
+    ["Normal", "Normal", "TWF"],
+    classes=["Normal", "TWF"],
+)
+sets = predictor.predict_set([[0.75, 0.25], [0.5, 0.5]], classes=["Normal", "TWF"])
+print(sets.mask)  # [[True, False], [False, False]]
+print(route_predictions(sets))  # ['automatic', 'human']
+report = evaluate_sets(["Normal", "TWF"], sets)
+print(report.marginal_coverage)  # 0.5
+```
+
+Para el modelo real, usar `build_model(random_state=42)`, ajustar con entrenamiento
+y pasar `predict_proba` de calibración y `model.classes_` a cada variante. Mondrian
+expone la misma interfaz; agrupa por etiqueta verdadera y calcula un umbral por
+clase. Los alpha de AI4I están prefijados en `data/README.md`.
 
 La calibración debe permanecer separada del ajuste del modelo. La garantía requiere
 intercambiabilidad; no garantiza exactitud individual ni detección de clases

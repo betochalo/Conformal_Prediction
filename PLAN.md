@@ -10,11 +10,16 @@ las métricas principales son cobertura por clase, tamaño medio y abstención.
 - [x] Contratos de datos y firmas de las funciones.
 - [x] Auditoría y política de etiquetas propuesta (ver `data/README.md`).
 - [x] Conteos reales por partición y decisión propuesta de fracciones y alpha.
-- [ ] Modelo, algoritmos conformes, métricas y ejecución integrada.
+- [x] Etapa 3: modelo base con preprocesamiento ajustado en entrenamiento.
+- [x] Etapa 4: puntuaciones, cuantil y split conformal.
+- [x] Etapa 5: Mondrian por clase, incluyendo calibración escasa o ausente.
+- [x] Etapa 6: abstención y métricas globales y por clase.
+- [ ] Etapa 7: ejecución integrada, exportación y evaluación final.
+- [ ] Etapa 8: explicación de resultados y entrega.
 
-Las funciones pendientes lanzan `NotImplementedError`: las firmas son acuerdos
-de integración, no algoritmos ya implementados. Los tipos no validan los datos
-automáticamente; cada implementación debe comprobar su contrato.
+Las etapas 1–6 están implementadas y verificadas con pruebas. `run_pipeline`
+sigue pendiente y lanza `NotImplementedError`. Los tipos compartidos no validan
+datos automáticamente; los módulos implementados comprueban sus contratos.
 
 ## Reparto propuesto
 
@@ -68,6 +73,11 @@ sin revisar este reporte. Probar disjunción, conservación de filas, reproducib
 y errores ante tamaños inviables. No sobremuestrear calibración ni prueba.
 
 ## Etapa 3 — Un único clasificador
+
+Implementada: Type usa OneHotEncoder denso, con categorías desconocidas codificadas
+como ceros; las variables numéricas pasan sin escalado. Solo se seleccionan los
+seis predictores. Se desactiva early stopping para no separar una validación interna
+adicional de las clases escasas; el modelo usa 100 iteraciones por defecto.
 
 Implementar `build_model` como Pipeline con codificación de Type y
 HistGradientBoostingClassifier. Ajustarlo solo en entrenamiento.
@@ -154,6 +164,6 @@ uv run ruff format --check .
 uv run pytest
 ```
 
-Crear pruebas al implementar cada etapa; no marcar pruebas vacías como aprobadas.
-Hasta tener la primera prueba, pytest devuelve código 5. Antes de cerrar la entrega,
+Las 86 pruebas actuales verifican las etapas 1–6 con ejemplos sintéticos y manuales;
+no equivalen a demostrar cobertura empírica en AI4I. Antes de cerrar la entrega,
 ejecutar también `uv build` y verificar el ejemplo de ejecución documentado.

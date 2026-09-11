@@ -1,10 +1,11 @@
-# Pruebas previstas
+# Pruebas
 
 Agregar pruebas junto con la implementación de cada componente:
 
-Seguir las etapas y criterios de [PLAN.md](../PLAN.md). Archivos previstos:
+Seguir las etapas y criterios de [PLAN.md](../PLAN.md). Archivos implementados:
 `test_data.py`, `test_splitting.py`, `test_model.py`, `test_scores.py`,
-`test_conformal.py`, `test_decision.py`, `test_evaluation.py` y `test_pipeline.py`.
+`test_conformal.py`, `test_decision.py` y `test_evaluation.py`.
+`test_pipeline.py` queda pendiente para la etapa 7.
 Usar fixtures pequeñas y sintéticas para las pruebas unitarias, sin descargas.
 Las funciones aún pendientes no deben tener pruebas ficticias que den éxito.
 
@@ -23,3 +24,8 @@ alcance exactamente la cobertura nominal.
 prioridad, ambas políticas de RNF y políticas inválidas. `test_splitting.py` cubre
 la Etapa 2: disjunción, conservación de filas, estratificación, reproducibilidad,
 fracciones inválidas, conteos con ceros y el rango del cuantil por alpha.
+
+Las etapas 3–6 añaden pruebas de entrenamiento sin ajustar durante la predicción,
+Type desconocido, puntuaciones y umbrales manuales, empates, clases sin calibración,
+recalibración, validación de estado y orden de clases, todas las rutas de decisión
+y cobertura no estimable. Total actual: 86 pruebas; no requieren acceso a la red.
