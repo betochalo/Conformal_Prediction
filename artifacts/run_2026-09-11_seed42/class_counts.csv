@@ -1,0 +1,6 @@
+class,train,calibration,test,total
+Normal,4821,2893,1929,9643
+TWF,23,14,9,46
+HDF,53,32,21,106
+PWF,47,28,19,94
+OSF,42,25,17,84

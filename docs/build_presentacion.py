@@ -11,7 +11,7 @@ from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
 ROOT = Path(".")
-FIG = ROOT / "docs" / "figures"
+FIG = ROOT / "artifacts" / "run_2026-09-11_seed42" / "figures"
 OUT = ROOT / "docs" / "Presentacion_Proyecto_Final.pptx"
 
 INK = RGBColor(0x0B, 0x0B, 0x0B)

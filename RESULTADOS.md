@@ -1,8 +1,8 @@
 # Resultados: predicción conforme con abstención en AI4I 2020
 
 Ejecución `artifacts/run_2026-09-11_seed42`, reproducible con el bloque de código del
-[README](README.md#ejecución-real). Los CSV citados aquí están en esa carpeta y las
-figuras versionadas en [docs/figures](docs/figures/). Nada se seleccionó con prueba:
+[README](README.md#ejecución-real). Los CSV y las figuras citados están en esa carpeta,
+versionada en el repositorio. Nada se seleccionó con prueba:
 los tres alpha, la partición y los hiperparámetros se fijaron antes de evaluar.
 
 ## Configuración
@@ -45,7 +45,7 @@ Conteos por clase y bloque (`class_counts.csv`):
 | mlp | split | 0.20 | 0.808 | 0.81 | 0.191 | 0.000 | 0.191 |
 | mlp | mondrian | 0.20 | 0.794 | 0.85 | 0.148 | 0.002 | 0.147 |
 
-![Métricas globales HGB](docs/figures/global_metrics_hgb.png)
+![Métricas globales HGB](artifacts/run_2026-09-11_seed42/figures/global_metrics_hgb.png)
 
 ## Cobertura por clase en prueba (`metrics_by_class.csv`)
 
@@ -64,8 +64,8 @@ Conteos por clase y bloque (`class_counts.csv`):
 | mlp | split | 0.20 | 0.831 | **0.000** | 0.048 | 0.421 | **0.000** |
 | mlp | mondrian | 0.20 | 0.794 | 0.778 | 0.762 | 0.947 | 0.706 |
 
-![Cobertura por clase HGB](docs/figures/coverage_by_class_hgb.png)
-![Cobertura por clase MLP](docs/figures/coverage_by_class_mlp.png)
+![Cobertura por clase HGB](artifacts/run_2026-09-11_seed42/figures/coverage_by_class_hgb.png)
+![Cobertura por clase MLP](artifacts/run_2026-09-11_seed42/figures/coverage_by_class_mlp.png)
 
 Tamaño medio del conjunto por clase, modelo hgb:
 
@@ -210,7 +210,7 @@ media del gradiente y norma del cambio de parámetros por época
 | 100 | 0.0323 | 0.1784 | 0.1063 | 0.9902 |
 | 200 | 0.0209 | 0.1822 | 0.1025 | 0.9946 |
 
-![Traza de entrenamiento](docs/figures/training_trace_mlp.png)
+![Traza de entrenamiento](artifacts/run_2026-09-11_seed42/figures/training_trace_mlp.png)
 
 Aciertos por clase en entrenamiento antes y después (`models/mlp/train_report.csv`):
 

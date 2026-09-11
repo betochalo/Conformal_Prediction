@@ -10,7 +10,7 @@ import argparse
 import zipfile
 from pathlib import Path
 
-INCLUDE_DIRS = ("src", "tests", "docs", "data")
+INCLUDE_DIRS = ("src", "tests", "docs", "data", "notebooks")
 INCLUDE_FILES = (
     "README.md",
     "PLAN.md",

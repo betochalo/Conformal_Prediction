@@ -1,7 +1,7 @@
 # Datos
 
-- `raw/`: archivo original AI4I, sin modificaciones.
-- `processed/`: etiquetas, características y particiones derivadas.
+- `raw/`: archivo original AI4I, sin modificaciones. Los derivados (etiquetas,
+  particiones, probabilidades) se guardan por ejecución en `artifacts/`.
 
 Fuente: https://archive.ics.uci.edu/dataset/601/ai4i
 

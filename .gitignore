@@ -16,13 +16,9 @@ wheels/
 .coverage
 htmlcov/
 
-# Local datasets and generated experiment outputs
+# Datos originales (descargar según data/README.md)
 data/raw/*
 !data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-artifacts/*
-!artifacts/README.md
 
 # Paquete de entrega generado
 Entrega_*.zip

@@ -154,7 +154,7 @@ reproducible. Incorporar el ejemplo de llamada al README cuando la función func
 - Comprobar instalación y ejecución desde un entorno limpio; generar paquete.
 
 APS, costos, clases desconocidas, segundo modelo y variables físicas siguen fuera
-de la entrega mínima. `features.py` queda reservado y no requiere implementación.
+de la entrega mínima; no hay módulo reservado para ellas.
 
 ## Comprobaciones durante el trabajo
 

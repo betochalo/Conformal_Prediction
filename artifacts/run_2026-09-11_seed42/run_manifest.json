@@ -1,0 +1,95 @@
+{
+  "started_utc": "2026-09-11T20:30:55.603450+00:00",
+  "data_sha256": "ffc3c28f35b1a1636eacd2bf46aca0ff5e795b4a8eb934309c5819079e9b5a18",
+  "n_raw_rows": 10000,
+  "n_labeled_rows": 9973,
+  "n_excluded_rows": 27,
+  "versions": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0",
+    "matplotlib": "3.11.1",
+    "package": "0.1.0",
+    "torch": "2.11.0+cu128",
+    "cuda_available": "True",
+    "cuda_version": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"
+  },
+  "config": {
+    "data_path": "data\\raw\\ai4i2020.csv",
+    "output_dir": "artifacts\\run_2026-09-11_seed42",
+    "label_policy": {
+      "priority": [
+        "TWF",
+        "PWF",
+        "OSF",
+        "HDF"
+      ],
+      "rnf_policy": "exclude_only_rnf"
+    },
+    "calibration_size": 0.3,
+    "test_size": 0.2,
+    "alphas": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "random_state": 42,
+    "models": [
+      "hgb",
+      "mlp"
+    ],
+    "mlp_hidden": [
+      64,
+      64
+    ],
+    "mlp_epochs": 200,
+    "mlp_batch_size": 256,
+    "mlp_learning_rate": 0.001,
+    "mlp_device": "auto",
+    "mlp_benchmark_repetitions": 3,
+    "overwrite": true
+  },
+  "mlp": {
+    "device": "cuda",
+    "fit_seconds": 6.5382371000014246,
+    "n_parameters": 5061,
+    "majority_baseline_train": 0.96690734055355,
+    "initial_loss": 1.1034865736961366,
+    "final_loss": 0.020880093239247798,
+    "entorno": {
+      "python": "3.13.5",
+      "pytorch": "2.11.0+cu128",
+      "plataforma": "Windows-11-10.0.26200-SP0",
+      "cpu": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+      "hilos_cpu": 24,
+      "cuda_runtime": "12.8",
+      "cuda_disponible": true,
+      "dtype": "float32",
+      "precision_matmul": "highest",
+      "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "memoria_gpu_gib": 11.94
+    },
+    "benchmark": {
+      "repeticiones": 3,
+      "dispositivos": [
+        "cpu",
+        "cuda"
+      ],
+      "mediana_ms": {
+        "cpu": 4347.3,
+        "cuda": 6380.7
+      },
+      "parametros_cercanos": {
+        "cpu": true,
+        "cuda": false
+      }
+    }
+  },
+  "finished_utc": "2026-09-11T20:31:38.057370+00:00",
+  "argv": [
+    "C:/Users/Jastk/AppData/Local/Temp/claude/c--Users-Jastk-OneDrive-Escritorio-Maestria-Programaci-n-Avanzada-proyecto-final-Conformal-Prediction/8b5a543b-e2cb-4aba-8b00-e2c0c7f2c988/scratchpad/run_real.py"
+  ]
+}
