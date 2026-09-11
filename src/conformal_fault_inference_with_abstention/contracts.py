@@ -74,6 +74,10 @@ class EvaluationReport:
 
     by_class: columnas class, support, covered, coverage, mean_set_size,
     abstention_rate. abstention_rate incluye las vías asistida y humana.
+    automatic_count, automatic_errors y automatic_error_rate miden la exactitud
+    condicionada a decidir de forma automática (conjunto de tamaño 1), que la
+    cobertura no garantiza. automatic_errors_by_class: columnas class, automatic,
+    errors, error_rate, predicted_as.
     """
 
     n_samples: int
@@ -82,4 +86,8 @@ class EvaluationReport:
     abstention_rate: float
     assisted_rate: float
     human_rate: float
+    automatic_count: int
+    automatic_errors: int
+    automatic_error_rate: float
     by_class: pd.DataFrame
+    automatic_errors_by_class: pd.DataFrame

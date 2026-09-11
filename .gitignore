@@ -23,3 +23,7 @@ data/processed/*
 !data/processed/.gitkeep
 artifacts/*
 !artifacts/README.md
+
+# Paquete de entrega generado
+Entrega_*.zip
+.venv-prueba/

@@ -4,8 +4,10 @@ Agregar pruebas junto con la implementación de cada componente:
 
 Seguir las etapas y criterios de [PLAN.md](../PLAN.md). Archivos implementados:
 `test_data.py`, `test_splitting.py`, `test_model.py`, `test_scores.py`,
-`test_conformal.py`, `test_decision.py` y `test_evaluation.py`.
-`test_pipeline.py` queda pendiente para la etapa 7.
+`test_conformal.py`, `test_decision.py`, `test_evaluation.py`, `test_pipeline.py`
+(integración con un CSV sintético de 900 filas), `test_cli.py` (punto de entrada y
+protección contra sobrescritura) y `test_torch_model.py` (se omite sin el extra
+torch; la prueba de CUDA se omite sin GPU).
 Usar fixtures pequeñas y sintéticas para las pruebas unitarias, sin descargas.
 Las funciones aún pendientes no deben tener pruebas ficticias que den éxito.
 
@@ -28,4 +30,4 @@ fracciones inválidas, conteos con ceros y el rango del cuantil por alpha.
 Las etapas 3–6 añaden pruebas de entrenamiento sin ajustar durante la predicción,
 Type desconocido, puntuaciones y umbrales manuales, empates, clases sin calibración,
 recalibración, validación de estado y orden de clases, todas las rutas de decisión
-y cobertura no estimable. Total actual: 86 pruebas; no requieren acceso a la red.
+y cobertura no estimable. Total actual: 112 pruebas; no requieren acceso a la red.

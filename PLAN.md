@@ -14,11 +14,12 @@ las métricas principales son cobertura por clase, tamaño medio y abstención.
 - [x] Etapa 4: puntuaciones, cuantil y split conformal.
 - [x] Etapa 5: Mondrian por clase, incluyendo calibración escasa o ausente.
 - [x] Etapa 6: abstención y métricas globales y por clase.
-- [ ] Etapa 7: ejecución integrada, exportación y evaluación final.
-- [ ] Etapa 8: explicación de resultados y entrega.
+- [x] Etapa 7: ejecución integrada, exportación y evaluación final; extensión MLP en PyTorch.
+- [x] Etapa 8: explicación de resultados en `RESULTADOS.md`; paquete generado con `uv build`;
+  punto de entrada `python -m conformal_fault_inference_with_abstention`; presentación en `docs/`.
 
-Las etapas 1–6 están implementadas y verificadas con pruebas. `run_pipeline`
-sigue pendiente y lanza `NotImplementedError`. Los tipos compartidos no validan
+Las ocho etapas están implementadas y verificadas con pruebas; `run_pipeline`
+ejecuta el proyecto completo. Los tipos compartidos no validan
 datos automáticamente; los módulos implementados comprueban sus contratos.
 
 ## Reparto propuesto
@@ -164,6 +165,6 @@ uv run ruff format --check .
 uv run pytest
 ```
 
-Las 86 pruebas actuales verifican las etapas 1–6 con ejemplos sintéticos y manuales;
+Las 112 pruebas actuales verifican las ocho etapas con ejemplos sintéticos y manuales;
 no equivalen a demostrar cobertura empírica en AI4I. Antes de cerrar la entrega,
 ejecutar también `uv build` y verificar el ejemplo de ejecución documentado.

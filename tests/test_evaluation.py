@@ -45,3 +45,46 @@ def test_invalid_evaluation_labels(labels):
 def test_empty_evaluation_rejected():
     with pytest.raises(ValueError):
         evaluate_sets([], PredictionSets(np.array(["A"]), np.empty((0, 1), dtype=bool)))
+
+
+def test_automatic_decision_errors_by_hand():
+    from conformal_fault_inference_with_abstention.evaluation import automatic_decision_errors
+
+    sets = PredictionSets(
+        np.array(["Normal", "TWF", "HDF"]),
+        np.array(
+            [
+                [True, False, False],  # Normal correcto, automático
+                [False, True, False],  # Normal → TWF, automático incorrecto
+                [False, True, False],  # TWF correcto, automático
+                [True, True, False],  # asistido, no cuenta
+                [False, False, False],  # humano, no cuenta
+                [False, False, True],  # TWF → HDF, automático incorrecto
+            ]
+        ),
+    )
+    y = ["Normal", "Normal", "TWF", "TWF", "HDF", "TWF"]
+    table = automatic_decision_errors(y, sets).set_index("class")
+    assert table.loc["Normal", "automatic"] == 2
+    assert table.loc["Normal", "errors"] == 1
+    assert table.loc["Normal", "error_rate"] == 0.5
+    assert table.loc["Normal", "predicted_as"] == "TWF"
+    assert table.loc["TWF", "automatic"] == 2
+    assert table.loc["TWF", "errors"] == 1
+    assert table.loc["TWF", "predicted_as"] == "HDF"
+    assert table.loc["HDF", "automatic"] == 0
+    assert np.isnan(table.loc["HDF", "error_rate"])
+    assert table.loc["HDF", "predicted_as"] == ""
+
+    report = evaluate_sets(y, sets)
+    assert report.automatic_count == 4
+    assert report.automatic_errors == 2
+    assert report.automatic_error_rate == 0.5
+    assert list(report.automatic_errors_by_class["class"]) == ["Normal", "TWF", "HDF"]
+
+
+def test_automatic_error_rate_is_nan_without_automatic_decisions():
+    sets = PredictionSets(np.array(["A", "B"]), np.array([[True, True], [False, False]]))
+    report = evaluate_sets(["A", "B"], sets)
+    assert report.automatic_count == 0
+    assert np.isnan(report.automatic_error_rate)
