@@ -3,11 +3,6 @@
 Proyecto de maestría basado en AI4I 2020: convertir las salidas de un clasificador
 en conjuntos de diagnósticos y decisiones automáticas, asistidas o humanas.
 
-La [propuesta original aprobada](propuesta_final_roberth_jaime.pdf) es la referencia
-conceptual. El alcance de ejecución se reduce según la observación docente:
-un clasificador base y dos variantes conformes en dos semanas.
-Estado actual: las ocho etapas están implementadas y ejecutadas. Los resultados de la
-ejecución real están en [RESULTADOS.md](RESULTADOS.md); el plan por etapas en [PLAN.md](PLAN.md).
 
 ## Propuesta frente a entregado
 
@@ -54,8 +49,8 @@ Cambiar la política o la partición exige regenerar ese reporte antes de entren
 Se conserva Python 3.13, definido en `.python-version`. Con `uv` instalado:
 
 ```bash
-uv sync                 # producto mínimo
-uv sync --extra torch   # además, PyTorch con CUDA 12.8 para la extensión MLP
+uv sync              
+uv sync --extra torch 
 uv run ruff check .
 ```
 
@@ -179,25 +174,4 @@ ejecutarlo hace falta la ejecución en `artifacts/`:
 
 ```bash
 uv run --with jupyterlab jupyter lab notebooks/analisis_resultados.ipynb
-```
-
-## Entrega
-
-El ZIP de entrega debe contener el código, las pruebas, `pyproject.toml`, `uv.lock`,
-la documentación (`README.md`, `PLAN.md`, `RESULTADOS.md`, `data/README.md`), el
-notebook de `notebooks/`, la presentación de `docs/`, los datos de `data/raw/` con su manifiesto de procedencia
-y los resultados de `artifacts/run_2026-09-11_seed42/`. Excluir
-`.venv`, `.git`, `dist` y cachés. El script `docs/empaquetar_entrega.py` genera ese
-ZIP desde la raíz del repositorio:
-
-```bash
-uv run python docs/empaquetar_entrega.py
-```
-
-Para comprobar el paquete construido en un entorno limpio:
-
-```bash
-uv build
-uv venv .venv-prueba && uv pip install --python .venv-prueba dist/*.whl
-.venv-prueba/Scripts/python -m conformal_fault_inference_with_abstention --help
 ```
